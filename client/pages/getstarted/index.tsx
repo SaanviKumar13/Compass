@@ -34,7 +34,13 @@ export default function GetStarted() {
       <h1 className="text-white font-bold text-6xl p-10">Get Started</h1>
       <div className="flex row-span-2 gap-20 m-10">
         {features.map((feature, index) => (
-          <Card key={index} icon={feature.icon} title={feature.title} description={feature.description} />
+          <Card
+            key={index}
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+            href={feature.href}
+          />
         ))}
       </div>
     </div>

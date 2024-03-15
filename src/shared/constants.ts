@@ -7,9 +7,9 @@ export const JWT_CONFIG = {
   };
   
   export const MESSAGES_TEXT = {
-    FETCH_USERS: 'User(s) Fetched Successfully',
     FETCH_USER_DETAILS: 'User Details Fetched Successfully',
     CREATE_USER: 'User Created Successfully',
+    FETCH_USER: 'Fetched User Data Successfully',
     DELETE_USER: 'User Deleted Successfully',
     UPDATE_USER: 'User Updated Successfully',
     UPDATE_USER_ACCESS: 'User Access Updated Successfully',
