@@ -1,33 +1,34 @@
 import { Card } from '@/components/Card';
+import { CircleUserRound, FileText, Library, ListTodo } from 'lucide-react';
 
 export default function GetStarted() {
   const features = [
     {
       title: 'Course Plan',
-      icon: 'course-plan-icon', // Add appropriate icon path or class name
+      icon: <Library className="w-20 h-20 p-2" />,
       description: 'Create and manage your course plan with ease.',
     },
     {
       title: 'Resume Builder',
-      icon: 'resume-builder-icon', // Add appropriate icon path or class name
+      icon: <FileText className="w-20 h-20 p-2" />,
       description: 'Build and customize your resume effortlessly.',
     },
     {
       title: 'Tasks',
-      icon: 'tasks-icon', // Add appropriate icon path or class name
+      icon: <ListTodo className="w-20 h-20 p-2" />,
       description: 'Organize your tasks and stay on top of your work.',
     },
     {
       title: 'Profile',
-      icon: 'profile-icon', // Add appropriate icon path or class name
+      icon: <CircleUserRound className="w-20 h-20 p-2" />,
       description: 'Manage your profile information and settings.',
     },
   ];
 
   return (
     <div className="w-full h-screen bg-white">
-      <h1 className="">Get Started</h1>
-      <div className="flex row-span-2 gap-20 m-20">
+      <h1 className="text-black font-bold text-6xl p-10">Get Started</h1>
+      <div className="flex row-span-2 gap-20 m-10">
         {features.map((feature, index) => (
           <Card key={index} icon={feature.icon} title={feature.title} description={feature.description} />
         ))}

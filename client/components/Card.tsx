@@ -1,5 +1,7 @@
+import { ReactElement } from 'react';
+
 interface CardProps {
-  icon: string;
+  icon: ReactElement;
   title: string;
   description: string;
 }
@@ -9,14 +11,12 @@ export function Card({ icon, title, description }: CardProps) {
     <div className="mt-6 w-96 bg-gray-500 p-10 rounded-3xl">
       <div>
         {icon}
-        <h5 color="blue-gray" className="mb-2">
-          {title}
-        </h5>
+        <h5 className="mb-2 text-xl font-semibold">{title}</h5>
         <h1>{description}</h1>
       </div>
       <div className="pt-0">
         <a href="#" className="inline-block">
-          <button className="flex items-center gap-2">
+          <button className="flex items-center gap-2 hover:text-purple-400">
             Learn More
             <svg
               xmlns="http://www.w3.org/2000/svg"
