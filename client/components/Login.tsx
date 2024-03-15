@@ -5,7 +5,7 @@ const Login = () => {
   const isLoggedIn = false;
 
   return (
-    <div className="bg-black text-stone-50 p-8 rounded shadow-md">
+    <div className="bg-stone-600 text-stone-50 p-8 rounded shadow-md">
       <form>
         {isLoggedIn ? (
           <p className="text-xl font-bold">Welcome, you are logged in!</p>
@@ -20,7 +20,7 @@ const Login = () => {
               name="username"
               placeholder="username"
               required
-              className="bg-stone-600 border border-stone-600 px-3 py-2  rounded focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 w-full"
+              className="bg-stone-50 border border-stone-600 px-3 py-2  rounded focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 w-full"
             />
             <br />
             <label htmlFor="password" className="block text-sm font-medium mb-2 mt-4">
@@ -32,13 +32,13 @@ const Login = () => {
               name="password"
               placeholder="password"
               required
-              className="bg-gray-700 border border-gray-600 px-3 py-2 rounded focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 w-full"
+              className="bg-stone-50 border border-stone-50 px-3 py-2 rounded focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 w-full"
             />
             <br />
             <div className="flex flex-row gap-5 items-center mt-10">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 my-2 mx-auto"
+                className="bg-stone-50 hover:bg-stone-50 text-stone-600 font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 my-2 mx-auto"
               >
                 Login
               </button>
@@ -46,7 +46,7 @@ const Login = () => {
               <Link
                 href="/createprofile"
                 type="button"
-                className="bg-transparent text-white hover:text-blue-500 border border-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 my-2"
+                className="bg-transparent text-stone-50 hover:text-stone-600 border border-stone-50 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 my-2"
               >
                 Create Account
               </Link>
