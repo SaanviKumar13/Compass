@@ -1,21 +1,21 @@
-import Link from "next/link";
-import { useState } from "react";
+import Link from 'next/link';
+import { useState } from 'react';
 
 const links = [
   {
-    title: "Get Started",
-    icon: "",
-    link: "/events",
+    title: 'Get Started',
+    icon: '',
+    link: '/events',
   },
   {
-    title: "Resume Builder",
-    icon: "",
-    link: "/#about",
+    title: 'Resume Builder',
+    icon: '',
+    link: '/#about',
   },
   {
-    title: "",
-    icon: "",
-    link: "/#schedule",
+    title: '',
+    icon: '',
+    link: '/#schedule',
   },
 ];
 
@@ -29,11 +29,7 @@ export default function Navbar() {
     <nav className="sm:flex sm:justify-between items-center mt-3 sm:mt-1 mx-auto fixed z-10 text-sm sm:text-base md:text-2xl font-heading-2 border-2 rounded-2xl p-2 top-12 w-5/6 md:w-11/12 left-0 inset-x-0 gap-3 md:gap-0">
       <div className="flex justify-between items-center">
         <Link href="/">
-          <img
-            src="/"
-            className="max-w-[46px] self-start md:self-center "
-            alt="logo"
-          />
+          <img src="/" className="max-w-[46px] self-start md:self-center " alt="logo" />
         </Link>
         <div className="sm:hidden mt-2">
           {nav ? (
@@ -46,12 +42,7 @@ export default function Navbar() {
                 stroke="currentColor"
                 aria-hidden="true"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           ) : (
@@ -63,12 +54,7 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           )}
@@ -89,8 +75,8 @@ export default function Navbar() {
       <ul
         className={
           nav
-            ? "block sm:hidden ease-in-out duration-1000 py-3 text-base px-1 text-center"
-            : "ease-in-out duration-1000 hidden"
+            ? 'block sm:hidden ease-in-out duration-1000 py-3 text-base px-1 text-center'
+            : 'ease-in-out duration-1000 hidden'
         }
       >
         {links.map(({ title, link }, idx) => (
