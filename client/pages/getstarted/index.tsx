@@ -1,5 +1,6 @@
 import { Card } from '@/components/Card';
 import { CircleUserRound, FileText, Library, ListTodo } from 'lucide-react';
+import Head from 'next/head';
 
 export default function GetStarted() {
   const features = [
@@ -31,6 +32,9 @@ export default function GetStarted() {
 
   return (
     <div className="w-full h-screen bg-stone-50">
+      <Head>
+        <title>Compass - Get Started</title>
+      </Head>
       <h1 className="text-c font-bold text-6xl p-10">Get Started</h1>
       <div className="flex row-span-2 gap-20 m-10">
         {features.map((feature, index) => (

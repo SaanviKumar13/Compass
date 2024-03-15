@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 interface FormData {
   topic: string;
@@ -21,6 +22,9 @@ const Learn: React.FC = () => {
     priorKnowledge: '',
     learningStyle: '',
   });
+
+  const [responseData, setResponseData] = useState<any>(null);
+  const router = useRouter();
 
   const handleDurationNumberChange = (value: string) => {
     setFormData(prevFormData => ({
@@ -59,98 +63,151 @@ const Learn: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const formatResponse = (response: string) => {
+    const sections = response.split('**');
+    return sections.map((section, index) => {
+      if (index % 2 === 1) {
+        return (
+          <h2 key={index} className="text-2xl font-semibold mb-4">
+            {section}
+          </h2>
+        );
+      } else {
+        const lines = section.split('*').filter(line => line.trim() !== '');
+        return (
+          <div key={index} className="">
+            {lines.map((line, i) => (
+              <p key={i} className="">
+                {line.trim()}
+              </p>
+            ))}
+          </div>
+        );
+      }
+    });
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
-    console.log('Form data submitted:', formData);
+    const prompt = `Give a detailed course plan for "${formData.topic}". 
+    Topic: ${formData.topic}
+    Duration: ${formData.duration.number} ${
+      formData.duration.days ? 'days' : formData.duration.weeks ? 'weeks' : 'months'
+    }
+    Level: ${formData.level || 'N/A'}
+    Prior Knowledge: ${formData.priorKnowledge}
+    Learning Style: ${formData.learningStyle}`;
+    try {
+      const response = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          topic: formData.topic,
+          prompt: prompt,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch Google Generative AI response');
+      }
+      const responseData = await response.json();
+      setResponseData(responseData);
+    } catch (error) {
+      console.error('Error fetching Google Generative AI response:', error);
+    }
   };
 
   const levels: string[] = ['beginner', 'intermediate', 'expert'];
   const durationUnits: Array<keyof FormData['duration']> = ['days', 'weeks', 'months'];
 
   return (
-    <div className="w-full h-screen bg-white text-black">
-      <h1 className="text-black font-bold text-6xl p-10">What are you up for today?</h1>
-      <form onSubmit={handleSubmit} className="p-10">
-        <label htmlFor="topic" className="block text-lg font-semibold mb-2">
-          What's the topic?
-        </label>
-        <input
-          type="text"
-          id="topic"
-          name="topic"
-          value={formData.topic}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          required
-        />
-        <label className="block text-lg font-semibold mt-4 mb-2">Duration</label>
-        <div className="flex flex-row mb-4">
+    <div className="w-full h-full bg-white text-black">
+      <div className="">
+        <h1 className="text-black font-bold text-6xl p-10">What are you up for today?</h1>
+        <form onSubmit={handleSubmit} className="p-10">
+          <label htmlFor="topic" className="block text-lg font-semibold mb-2">
+            What's the topic?
+          </label>
           <input
-            type="number"
-            id="number"
-            name="number"
-            value={formData.duration.number}
-            onChange={e => handleDurationNumberChange(e.target.value)}
-            className="w-32 mr-5 p-2 border text-black border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            type="text"
+            id="topic"
+            name="topic"
+            value={formData.topic}
+            onChange={handleChange}
+            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
             required
           />
-          {durationUnits.map(unit => (
-            <div
-              key={unit}
-              onClick={() => handleDurationUnitChange(unit)}
-              className={`cursor-pointer rounded-md p-2 mr-4 ${
-                formData.duration[unit] ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
-              }`}
-            >
-              {unit.charAt(0).toUpperCase() + unit.slice(1)}
-            </div>
-          ))}
-        </div>
-        <label className="block text-lg font-semibold mt-4 mb-2">Level</label>
-        <div className="flex">
-          {levels.map(level => (
-            <div
-              key={level}
-              onClick={() => handleLevelClick(level)}
-              className={`cursor-pointer rounded-md p-2 mr-4 ${
-                formData.level === level ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
-              }`}
-            >
-              {level.charAt(0).toUpperCase() + level.slice(1)}
-            </div>
-          ))}
-        </div>
-        <label htmlFor="priorKnowledge" className="block text-lg font-semibold mt-4 mb-2">
-          Prior Knowledge
-        </label>
-        <input
-          type="text"
-          id="priorKnowledge"
-          name="priorKnowledge"
-          value={formData.priorKnowledge}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          required
-        />
-        <label htmlFor="learningStyle" className="block text-lg font-semibold mt-4 mb-2">
-          Learning Style Preferences
-        </label>
-        <input
-          type="text"
-          id="learningStyle"
-          name="learningStyle"
-          value={formData.learningStyle}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          required
-        />
-        <button
-          type="submit"
-          className="mt-8 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-        >
-          Submit
-        </button>
-      </form>
+          <label className="block text-lg font-semibold mt-4 mb-2">Duration</label>
+          <div className="flex flex-row mb-4">
+            <input
+              type="number"
+              id="number"
+              name="number"
+              value={formData.duration.number}
+              onChange={e => handleDurationNumberChange(e.target.value)}
+              className="w-48 mr-5 p-2 border text-black border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
+            {durationUnits.map(unit => (
+              <div
+                key={unit}
+                onClick={() => handleDurationUnitChange(unit)}
+                className={`cursor-pointer rounded-md p-2 mr-4 ${
+                  formData.duration[unit] ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                }`}
+              >
+                {unit.charAt(0).toUpperCase() + unit.slice(1)}
+              </div>
+            ))}
+          </div>
+          <label className="block text-lg font-semibold mt-4 mb-2">Level</label>
+          <div className="flex">
+            {levels.map(level => (
+              <div
+                key={level}
+                onClick={() => handleLevelClick(level)}
+                className={`cursor-pointer rounded-md p-2 mr-4 ${
+                  formData.level === level ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                }`}
+              >
+                {level.charAt(0).toUpperCase() + level.slice(1)}
+              </div>
+            ))}
+          </div>
+          <label htmlFor="priorKnowledge" className="block text-lg font-semibold mt-4 mb-2">
+            Prior Knowledge
+          </label>
+          <input
+            type="text"
+            id="priorKnowledge"
+            name="priorKnowledge"
+            value={formData.priorKnowledge}
+            onChange={handleChange}
+            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            required
+          />
+          <label htmlFor="learningStyle" className="block text-lg font-semibold mt-4 mb-2">
+            Learning Style Preferences
+          </label>
+          <input
+            type="text"
+            id="learningStyle"
+            name="learningStyle"
+            value={formData.learningStyle}
+            onChange={handleChange}
+            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            required
+          />
+          <button
+            type="submit"
+            className="mt-8 px-4 py-2 block bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      {responseData && <div className="prose p-10"> {formatResponse(responseData.generatedText)}</div>}
     </div>
   );
 };
