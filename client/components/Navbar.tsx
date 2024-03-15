@@ -5,17 +5,17 @@ const links = [
   {
     title: 'Get Started',
     icon: '',
-    link: '/events',
+    link: '/getstarted',
   },
   {
     title: 'Resume Builder',
     icon: '',
-    link: '/#about',
+    link: '/resume',
   },
   {
     title: '',
     icon: '',
-    link: '/#schedule',
+    link: '/',
   },
 ];
 
