@@ -8,7 +8,7 @@ const links = [
     link: '/getstarted',
   },
   {
-    title: 'Resume Builder',
+    title: 'CV Crafting Tool',
     icon: '',
     link: '/resume',
   },

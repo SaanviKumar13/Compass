@@ -8,7 +8,7 @@ interface CardProps {
 
 export function Card({ icon, title, description }: CardProps) {
   return (
-    <div className="mt-6 w-96 bg-gray-500 p-10 rounded-3xl">
+    <div className="mt-6 w-96 bg-blue-300 p-10 rounded-3xl">
       <div>
         {icon}
         <h5 className="mb-2 text-xl font-semibold">{title}</h5>
