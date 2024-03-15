@@ -10,7 +10,7 @@ export default function GetStarted() {
       href: '/getstarted/learn',
     },
     {
-      title: 'Resume Builder',
+      title: 'CV Crafting Tool',
       icon: <FileText className="w-20 h-20 p-2" />,
       description: 'Build and customize your resume effortlessly.',
       href: '/getstarted/resume',
@@ -30,8 +30,8 @@ export default function GetStarted() {
   ];
 
   return (
-    <div className="w-full h-screen bg-white">
-      <h1 className="text-black font-bold text-6xl p-10">Get Started</h1>
+    <div className="w-full h-screen bg-blue-950">
+      <h1 className="text-white font-bold text-6xl p-10">Get Started</h1>
       <div className="flex row-span-2 gap-20 m-10">
         {features.map((feature, index) => (
           <Card
