@@ -5,7 +5,7 @@ const Login = () => {
   const isLoggedIn = false;
 
   return (
-    <div className="bg-gray-800 text-white p-8 rounded shadow-md">
+    <div className="bg-black text-stone-50 p-8 rounded shadow-md">
       <form>
         {isLoggedIn ? (
           <p className="text-xl font-bold">Welcome, you are logged in!</p>
@@ -20,7 +20,7 @@ const Login = () => {
               name="username"
               placeholder="username"
               required
-              className="bg-gray-700 border border-gray-600 px-3 py-2  rounded focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 w-full"
+              className="bg-stone-600 border border-stone-600 px-3 py-2  rounded focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 w-full"
             />
             <br />
             <label htmlFor="password" className="block text-sm font-medium mb-2 mt-4">

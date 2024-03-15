@@ -42,13 +42,13 @@ export const CreateProfile = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 bg-blue-950 flex items-center justify-center">
+    <div className="min-h-screen p-6 bg-stone-50 flex items-center justify-center">
       <div className="container max-w-screen-lg mx-auto">
         <div>
-          <h2 className="font-semibold text-xl text-white">Profile Form</h2>
-          <p className="text-white mb-6">Please fill out all the fields.</p>
+          <h2 className="font-semibold text-xl text-stone-600">Profile Form</h2>
+          <p className="text-stone-600 mb-6">Please fill out all the fields.</p>
 
-          <div className="bg-blue-300 text-blue-950 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+          <div className="bg-stone-50 text-stone-600 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
             <form onSubmit={handleSubmit}>
               {step === 1 && (
                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-2">
@@ -60,7 +60,7 @@ export const CreateProfile = () => {
                       id="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                       required
                     />
                   </div>
@@ -72,7 +72,7 @@ export const CreateProfile = () => {
                       id="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                       required
                     />
                   </div>
@@ -84,7 +84,7 @@ export const CreateProfile = () => {
                       id="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                       required
                     />
                   </div>
@@ -96,7 +96,7 @@ export const CreateProfile = () => {
                       id="github"
                       value={formData.github}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                   <div className="col-span-1">
@@ -107,7 +107,7 @@ export const CreateProfile = () => {
                       id="linkedin"
                       value={formData.linkedin}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                   <div className="col-span-1">
@@ -118,7 +118,7 @@ export const CreateProfile = () => {
                       id="dob"
                       value={formData.dob}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                   <div className="col-span-1">
@@ -129,7 +129,7 @@ export const CreateProfile = () => {
                       id="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                 </div>
@@ -144,7 +144,7 @@ export const CreateProfile = () => {
                       id="year"
                       value={formData.year}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                   <div className="col-span-1">
@@ -155,7 +155,7 @@ export const CreateProfile = () => {
                       id="semester"
                       value={formData.semester}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                   <div className="col-span-1">
@@ -166,7 +166,7 @@ export const CreateProfile = () => {
                       id="degree"
                       value={formData.degree}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                   <div className="col-span-1">
@@ -177,7 +177,7 @@ export const CreateProfile = () => {
                       id="skills"
                       value={formData.skills}
                       onChange={handleChange}
-                      className="px-4 appearance-none outline-none text-blue-950 w-full bg-transparent border border-blue-950 rounded-md h-10"
+                      className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export const CreateProfile = () => {
                     Previous
                   </button>
                 )}
-                <button type="submit" className="bg-blue-950 text-white font-bold py-2 px-4 rounded mt-5">
+                <button type="submit" className="bg-stone-600 text-stone-50 font-bold py-2 px-4 rounded mt-5">
                   {step === 1 ? 'Next' : 'Submit'}
                 </button>
               </div>

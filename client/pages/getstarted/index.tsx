@@ -30,8 +30,8 @@ export default function GetStarted() {
   ];
 
   return (
-    <div className="w-full h-screen bg-blue-950">
-      <h1 className="text-white font-bold text-6xl p-10">Get Started</h1>
+    <div className="w-full h-screen bg-black">
+      <h1 className="text-c font-bold text-6xl p-10">Get Started</h1>
       <div className="flex row-span-2 gap-20 m-10">
         {features.map((feature, index) => (
           <Card
