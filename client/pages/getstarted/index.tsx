@@ -7,21 +7,25 @@ export default function GetStarted() {
       title: 'Course Plan',
       icon: <Library className="w-20 h-20 p-2" />,
       description: 'Create and manage your course plan with ease.',
+      href: '/getstarted/learn',
     },
     {
       title: 'Resume Builder',
       icon: <FileText className="w-20 h-20 p-2" />,
       description: 'Build and customize your resume effortlessly.',
+      href: '/getstarted/resume',
     },
     {
       title: 'Tasks',
       icon: <ListTodo className="w-20 h-20 p-2" />,
       description: 'Organize your tasks and stay on top of your work.',
+      href: '/tasks',
     },
     {
       title: 'Profile',
       icon: <CircleUserRound className="w-20 h-20 p-2" />,
       description: 'Manage your profile information and settings.',
+      href: '/profile',
     },
   ];
 
