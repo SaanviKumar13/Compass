@@ -20,7 +20,7 @@ export default function GetStarted() {
       title: 'Tasks',
       icon: <ListTodo className="w-20 h-20 p-2" />,
       description: 'Because learning is best done by working.',
-      href: '/tasks',
+      href: '/getstarted/tasks',
     },
     {
       title: 'Profile',
