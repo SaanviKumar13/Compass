@@ -19,7 +19,7 @@ export default function GetStarted() {
     {
       title: 'Tasks',
       icon: <ListTodo className="w-20 h-20 p-2" />,
-      description: 'Organize your tasks and stay on top of your work.',
+      description: 'Because learning is best done by working.',
       href: '/tasks',
     },
     {
@@ -31,12 +31,12 @@ export default function GetStarted() {
   ];
 
   return (
-    <div className="w-full h-screen bg-stone-50">
+    <div className="w-full h-full bg-stone-50">
       <Head>
         <title>Compass - Get Started</title>
       </Head>
-      <h1 className="text-c font-bold text-6xl p-10">Get Started</h1>
-      <div className="flex row-span-2 gap-20 m-10">
+      <h1 className="text-black font-heading font-bold text-6xl p-10 px-60">Get Started</h1>
+      <div className="grid grid-cols-2 px-60 py-10">
         {features.map((feature, index) => (
           <Card
             key={index}

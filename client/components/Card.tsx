@@ -10,14 +10,14 @@ interface CardProps {
 
 export function Card({ icon, title, description, href }: CardProps) {
   return (
-    <div className="mt-6 w-96 bg-stone-600 p-10 rounded-3xl">
+    <div className="mt-6 w-96 shadow-lg bg-[#FAF3F0] text-black p-10 rounded-3xl">
       <div>
         {icon}
-        <h5 className="mb-2 text-xl font-semibold">{title}</h5>
+        <h5 className="mb-2 text-xl font-heading font-semibold">{title}</h5>
         <h1>{description}</h1>
       </div>
       <div className="pt-0">
-        <Link href={href} className="flex items-center gap-2 hover:text-purple-400">
+        <Link href={href} className="flex items-center mt-6 gap-2 hover:font-bold">
           Learn More
           <svg
             xmlns="http://www.w3.org/2000/svg"

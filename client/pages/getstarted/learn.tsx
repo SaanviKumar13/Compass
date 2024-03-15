@@ -122,9 +122,9 @@ const Learn: React.FC = () => {
   const durationUnits: Array<keyof FormData['duration']> = ['days', 'weeks', 'months'];
 
   return (
-    <div className="w-full h-full bg-white text-black">
+    <div className="w-full h-full bg-stone-50 text-black">
       <div className="">
-        <h1 className="text-black font-bold text-6xl p-10">What are you up for today?</h1>
+        <h1 className="text-black font-bold font-heading text-6xl p-10">What are you up for today?</h1>
         <form onSubmit={handleSubmit} className="p-10">
           <label htmlFor="topic" className="block text-lg font-semibold mb-2">
             What's the topic?
@@ -135,7 +135,7 @@ const Learn: React.FC = () => {
             name="topic"
             value={formData.topic}
             onChange={handleChange}
-            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#BEADFA]"
             required
           />
           <label className="block text-lg font-semibold mt-4 mb-2">Duration</label>
@@ -146,7 +146,7 @@ const Learn: React.FC = () => {
               name="number"
               value={formData.duration.number}
               onChange={e => handleDurationNumberChange(e.target.value)}
-              className="w-48 mr-5 p-2 border text-black border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              className="w-48 mr-5 p-2 border text-black border-gray-300 rounded-md focus:outline-none focus:border-[#BEADFA]"
               required
             />
             {durationUnits.map(unit => (
@@ -154,7 +154,7 @@ const Learn: React.FC = () => {
                 key={unit}
                 onClick={() => handleDurationUnitChange(unit)}
                 className={`cursor-pointer rounded-md p-2 mr-4 ${
-                  formData.duration[unit] ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                  formData.duration[unit] ? 'hover:bg-[#D0BFFF] bg-[#BEADFA] text-white' : 'bg-gray-200 text-black'
                 }`}
               >
                 {unit.charAt(0).toUpperCase() + unit.slice(1)}
@@ -168,7 +168,7 @@ const Learn: React.FC = () => {
                 key={level}
                 onClick={() => handleLevelClick(level)}
                 className={`cursor-pointer rounded-md p-2 mr-4 ${
-                  formData.level === level ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                  formData.level === level ? 'hover:bg-[#D0BFFF] bg-[#BEADFA] text-white' : 'bg-gray-200 text-black'
                 }`}
               >
                 {level.charAt(0).toUpperCase() + level.slice(1)}
@@ -184,7 +184,7 @@ const Learn: React.FC = () => {
             name="priorKnowledge"
             value={formData.priorKnowledge}
             onChange={handleChange}
-            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#BEADFA]"
             required
           />
           <label htmlFor="learningStyle" className="block text-lg font-semibold mt-4 mb-2">
@@ -196,12 +196,12 @@ const Learn: React.FC = () => {
             name="learningStyle"
             value={formData.learningStyle}
             onChange={handleChange}
-            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="w-48 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#BEADFA]"
             required
           />
           <button
             type="submit"
-            className="mt-8 px-4 py-2 block bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className="mt-8 px-4 py-2 block hover:bg-[#D0BFFF] bg-[#BEADFA] text-white rounded-md focus:outline-none focus:bg-blue-600"
           >
             Submit
           </button>
