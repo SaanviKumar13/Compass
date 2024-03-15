@@ -1,22 +1,36 @@
-require('dotenv').config();
+import { config } from 'dotenv';
+import path from 'path';
+import { z } from 'zod';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+const envPath = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
+config({ path: path.join(__dirname, '..', envPath) });
+//console.log(" here", path.join(__dirname, '..', envPath))
+
+const envSchema = z.object({
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('test'),
+  PORT: z.string().regex(/^\d+$/).optional().default('5050'),
+  JWT_SECRET: z.string(),
+  MONGODB_URI: z.string(),
+});
+
+const parsedSchema = envSchema.parse(process.env);
+
+export type EnvSchemaType = z.infer<typeof envSchema>;
+
 export default {
-  /**
-   * Port the app should run on
-   */
-  port: parseInt(process.env.PORT) || 5050,
+  NODE_ENV: parsedSchema.NODE_ENV,
+
+  PORT: parsedSchema.PORT || 5050,
+
+  JWT_SECRET: parsedSchema.JWT_SECRET,
 
   /**
    * Database the app should connect to
    */
-  databaseURL: process.env.MONGODB_URI,
+  MONGODB_URI: parsedSchema.MONGODB_URI,
 
-  /**
-   * The secret sauce to validate JWT
-   */
-  jwtSecret: process.env.JWT_SECRET,
 
   /**
    * Used by Winston logger
