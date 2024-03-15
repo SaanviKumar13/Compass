@@ -9,4 +9,13 @@ export const UserSchema = z.object({
   isDeleted: z.boolean().optional().default(false),
 });
 
+export const UsersSchema = z.object({
+  // name: z.string(),
+  // regNo: z.string(),
+  // phoneNumber: z.string(),
+  email: z.string().email({ message: 'Invalid email format' }),
+  password: z.string(),
+});
+
 export type UserType = z.infer<typeof UserSchema>;
+export type UserSchemaType = z.infer<typeof UsersSchema>;
