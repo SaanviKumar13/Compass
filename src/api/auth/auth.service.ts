@@ -7,28 +7,39 @@ import bcrypt from 'bcrypt';
 import { ERRORS } from '../../shared/errors';
 
 export async function handleAddNewUser(signup: UserSchemaType) {
-  const data = await (await db()).collection('users').findOne({ email: signup.email });
-  if (data) {
-    throw {
-      statusCode: ERRORS.USER_ALREADY_EXSIST.code,
-      message: ERRORS.USER_ALREADY_EXSIST.message.error,
-      description: ERRORS.USER_ALREADY_EXSIST.message.error_description,
-    };
+    const data = await (await db()).collection('users').findOne({ email: signup.email });
+    if (data) {
+        throw {
+          statusCode: ERRORS.USER_ALREADY_EXSIST.code,
+          message: ERRORS.USER_ALREADY_EXSIST.message.error,
+          description: ERRORS.USER_ALREADY_EXSIST.message.error_description,
+        };
+    }
+    const collection = (await db()).collection('users');
+  
+    const hash = await bcrypt.hash(signup.password, SALT_ROUNDS);
+  
+    await collection.insertOne({
+      email: signup.email,
+      password: hash,
+      name: signup.name,
+      linkedin: signup.linkedin,
+      github: signup.github,
+      phone: signup.phone,
+      dob: signup.dob,
+      year: signup.year,
+      degree: signup.degree,
+      semester: signup.semester,
+      skills: signup.skills,
+      interests: signup.interests,
+      isAdmin: false,
+      isVerified: false,
+      isDeleted: false,
+      projects: [],
+      createdAt: new Date(),
+    });
   }
-  const collection = (await db()).collection('users');
-
-  const hash = await bcrypt.hash(signup.password, SALT_ROUNDS);
-
-  await collection.insertOne({
-    email: signup.email,
-    password: hash,
-    isAdmin: false,
-    isVerified: false,
-    isDeleted: false,
-    projects: [],
-    createdAt: new Date(),
-  });
-}
+  
 
 export async function handleExistingUser({ email, password }: UserSchemaType): Promise<string> {
   const data = await (await db()).collection<UserType>('users').findOne({ email: email });

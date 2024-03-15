@@ -180,6 +180,17 @@ export const CreateProfile = () => {
                       className="px-4 appearance-none outline-none text-stone-600 w-full bg-transparent border border-stone-600 rounded-md h-10"
                     />
                   </div>
+                  <div className="col-span-1">
+                    <label htmlFor="interests">Interests</label>
+                    <input
+                      type="text"
+                      name="interests"
+                      id="interests"
+                      value={formData.interests}
+                      onChange={handleChange}
+                      className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent border border-gray-700 rounded-md h-10"
+                    />
+                  </div>
                 </div>
               )}
               <div className="flex justify-between">
