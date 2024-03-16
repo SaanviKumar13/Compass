@@ -61,7 +61,7 @@ export async function loginUser(body:{username:string, password:string}) {
   }
 }
 
-export default async function signupUser(body:User) {
+export async function signupUser(body:User) {
   try {
     const response = await axios.post(
       API.BASE_URL + API.ENDPOINTS.AUTH.SIGNUP, body
@@ -303,16 +303,16 @@ export default async function signupUser(body:User) {
 //   }
 // }
 
-// export async function getSearch(query: string) {
-//   try {
-//     const response = await axios.get(
-//       API.BASE_URL +
-//         API.ENDPOINTS.BLOGS.BASE +
-//         API.ENDPOINTS.BLOGS.SEARCH(query),
-//     );
-//     return response.data;
-//   } catch (error) {
-//     console.error(error);
-//     return {"users": [], "blogs": []};
-//   }
-// }
+export async function getSearch(query: string) {
+  try {
+    const response = await axios.get(
+      API.BASE_URL +
+        API.ENDPOINTS.BLOGS.BASE +
+        API.ENDPOINTS.BLOGS.SEARCH(query),
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return {"users": [], "blogs": []};
+  }
+}
