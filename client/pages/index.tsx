@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import router from 'next/router';
 import { useState } from 'react';
-import { signupUser } from './utils/api';
+import signupUser from './utils/api';
 
 export const Home = () => {
   const [formData, setFormData] = useState({

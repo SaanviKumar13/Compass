@@ -1,5 +1,21 @@
 import axios from "axios";
 
+interface User{
+  email: string;
+  password: string;
+  name: string;
+  linkedin: string;
+  github: string;
+  phone: string;
+  dob: string;
+  year: string;
+  degree: string;
+  semester: string;
+  skills: string[];
+  interests: string[];
+  }
+  
+
 const API = {
   BASE_URL: process.env.API_BASE_URL,
   ENDPOINTS: {
@@ -45,7 +61,7 @@ export async function loginUser(body:{username:string, password:string}) {
   }
 }
 
-export async function signupUser(body:User) {
+export default async function signupUser(body:User) {
   try {
     const response = await axios.post(
       API.BASE_URL + API.ENDPOINTS.AUTH.SIGNUP, body
