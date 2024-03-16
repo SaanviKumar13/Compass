@@ -1,7 +1,7 @@
-import Login from '@/components/Login';
 import Head from 'next/head';
 import router from 'next/router';
 import { useState } from 'react';
+import { signupUser } from './utils/api';
 
 export const Home = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +16,7 @@ export const Home = () => {
     degree: '',
     interests: [],
     phone: '',
-    skills: '',
+    skills: [],
   });
   const [step, setStep] = useState(1);
 
@@ -28,14 +28,15 @@ export const Home = () => {
     }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log(formData);
     if (step === 1) {
       setStep(2);
     } else {
-      router.push('/getstarted');
-      console.log('Form submitted');
+      const response = await signupUser(formData);
+      console.log(response);
+      // router.push('/getstarted');
     }
   };
 
