@@ -36,7 +36,7 @@ export const Home = () => {
     } else {
       const response = await signupUser(formData);
       console.log(response);
-      // router.push('/getstarted');
+      router.push('/getstarted');
     }
   };
 

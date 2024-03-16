@@ -20,8 +20,8 @@ const API = {
   BASE_URL: process.env.API_BASE_URL,
   ENDPOINTS: {
     AUTH: {
-      LOGIN: "/auth/login",
-      SIGNUP: "/auth/signup",
+      LOGIN: "/api/auth/login",
+      SIGNUP: "/api/auth/signup",
     },
     BLOGS: {
       BASE: "/api",
