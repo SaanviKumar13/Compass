@@ -11,11 +11,7 @@ interface CardProps {
 
 export function Card({ icon, title, description, href }: CardProps) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className="mt-6 w-96 shadow-lg bg-[#FAF3F0] text-black p-10 rounded-3xl"
-    >
+    <motion.div whileHover={{ scale: 1.1 }} className="mt-6 w-96 shadow-lg bg-[#FAF3F0] text-black p-10 rounded-3xl">
       <div>
         {icon}
         <h5 className="mb-2 text-xl font-heading font-semibold">{title}</h5>
